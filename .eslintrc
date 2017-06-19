@@ -5,7 +5,13 @@
      "import",
   ],
   "settings": {
-    "import/resolver": "webpack",
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": {
+          "server",
+        },
+      },
+    },
   },
   "rules": {
     "import/no-unresolved": ["error"],

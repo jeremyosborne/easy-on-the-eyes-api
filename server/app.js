@@ -1,4 +1,3 @@
-const devWebpackMiddleware = require('./dev-webpack-middleware')
 const express = require('express')
 const content = require('easy-on-the-eyes-content').content
 const fetchContent = require('./content').fetch
@@ -77,20 +76,6 @@ app.use('/api', function (err, req, res, next) {
     }
   })
 })
-
-if (process.env.NODE_ENV !== 'production') {
-  // We want this loading after APIs but before static file handling.
-  // webpack dev server-ish stuff will catch and intercept any request,
-  // like index.html, that we might want to service with our other parts
-  // of our application.
-  logger.info('Loading webpack dev and hot reloading middleware.')
-  app.use(devWebpackMiddleware({
-    // Webpack 2 idiom exports a function not a static configuration file.
-    webpackConfig: require(path.resolve(__dirname, '../webpack.config'))({
-      production: false
-    })
-  }))
-}
 
 app.use(express.static(path.join(ROOT_PATH, 'public')))
 
