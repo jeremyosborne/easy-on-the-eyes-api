@@ -10,6 +10,6 @@ module.exports = {
     var $ = cheerio.load(noCruft.xform(html))
 
     // Return the assumed visible content.
-    return $('body').html()
+    return $('body').html().trim()
   }
 }

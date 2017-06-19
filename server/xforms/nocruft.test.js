@@ -6,14 +6,14 @@ var assert = require('assert')
 var transformer = require('./nocruft')
 
 describe('noCruft', function () {
-  var input = `<html>
+  var input = `
+<html>
     <head><title></title><script></script><link></link><style></style></head>
     <body><noscript></noscript></body>
-  </html>`
-  var output = `<html>
-    <head><title></title></head>
-    <body></body>
-  </html>`
+</html>`
+  var output = `<html><head><title></title></head>
+    <body>
+</body></html>`
 
   it('returns expected output', function () {
     assert.strictEqual(transformer.xform(input), output)

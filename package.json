@@ -8,7 +8,7 @@
     "lint": "npm run lint:js",
     "start:production": "cross-env NODE_ENV=production node server",
     "start": "supervisor -e css,js,jsx -w server server",
-    "test": "mocha src/**/*.test.js",
+    "test": "mocha \"server/**/*.test.js\"",
     "commit": "commit-wizard"
   },
   "repository": {
@@ -52,6 +52,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.0.1",
     "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^3.4.2",
     "pre-git": "^3.15.0",
     "supervisor": "0.12.0"
   },

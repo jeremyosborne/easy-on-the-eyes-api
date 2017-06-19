@@ -26,6 +26,6 @@ module.exports = {
       .remove()
 
     // Return everything, assumed to be further processed by other transforms.
-    return $.html()
+    return $.html().trim()
   }
 }
