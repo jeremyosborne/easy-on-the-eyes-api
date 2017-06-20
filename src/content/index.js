@@ -1,6 +1,6 @@
 const axios = require('axios')
 const content = require('easy-on-the-eyes-content').content
-const xforms = require('../xforms')
+const xforms = require('xforms')
 
 /**
  * Retrieve and transform web content.

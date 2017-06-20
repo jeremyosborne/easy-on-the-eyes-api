@@ -8,7 +8,7 @@
     "import/resolver": {
       "node": {
         "moduleDirectory": {
-          "server",
+          "src",
         },
       },
     },

@@ -4,16 +4,16 @@
   "description": "the web, simply",
   "main": "server/index.js",
   "scripts": {
-    "lint:js": "eslint \"server/**/*.js?(x)\"",
+    "lint:js": "eslint \"src/**/*.js?(x)\"",
     "lint": "npm run lint:js",
-    "start:production": "cross-env NODE_ENV=production node server",
-    "start": "supervisor -e css,js,jsx -w server server",
-    "test": "mocha \"server/**/*.test.js\"",
+    "start:production": "cross-env NODE_ENV=production cross-env NODE_PATH=$NODE_PATH:src node src",
+    "start": "cross-env NODE_PATH=$NODE_PATH:src supervisor -e css,js,jsx -w src src",
+    "test": "mocha \"src/**/*.test.js\"",
     "commit": "commit-wizard"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jeremyosborne/easy-on-the-eyes.git"
+    "url": "git+https://github.com/jeremyosborne/easy-on-the-eyes-api.git"
   },
   "keywords": [
     "reader",
@@ -23,9 +23,9 @@
   "author": "Jeremy Osborne <jeremywosborne@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jeremyosborne/easy-on-the-eyes/issues"
+    "url": "https://github.com/jeremyosborne/easy-on-the-eyes-api/issues"
   },
-  "homepage": "https://github.com/jeremyosborne/easy-on-the-eyes#readme",
+  "homepage": "https://github.com/jeremyosborne/easy-on-the-eyes-api#readme",
   "dependencies": {
     "axios": "^0.16.2",
     "cheerio": "^1.0.0-rc.1",
