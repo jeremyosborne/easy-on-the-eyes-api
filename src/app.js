@@ -1,6 +1,7 @@
 const express = require('express')
 const content = require('easy-on-the-eyes-content').content
 const fetchContent = require('./content').fetch
+const fetchSearch = require('./search').fetch
 const fetchSuggestions = require('./suggestions').fetch
 const logger = require('./logger')
 const morgan = require('morgan')
@@ -46,6 +47,25 @@ app.get('/api/content', function (req, res) {
       error: {
         code: 400,
         message: 'please provide url query parameter',
+      }
+    }))
+  }
+})
+
+app.get('/api/search/:search', function (req, res) {
+  var search = req.params.search
+  if (search) {
+    fetchSearch(search).then((results) => {
+      res.send(results)
+    }).catch((err) => {
+      console.error(err)
+      res.status((err.error && err.error.code) || 500).send(err)
+    })
+  } else {
+    res.status(400).send(content({
+      error: {
+        code: 400,
+        message: 'please search parameter in path',
       }
     }))
   }
