@@ -1,5 +1,5 @@
 const express = require('express')
-const content = require('easy-on-the-eyes-content').content
+const content = require('easy-on-the-eyes-content')
 const fetchContent = require('./content').fetch
 const fetchSearch = require('./search').fetch
 const fetchSuggestions = require('./suggestions').fetch
@@ -43,7 +43,7 @@ app.get('/api/content', function (req, res) {
       res.status((errorContent.error && errorContent.error.code) || 500).send(errorContent)
     })
   } else {
-    res.status(400).send(content({
+    res.status(400).send(content.create({
       error: {
         code: 400,
         message: 'please provide url query parameter',
@@ -62,7 +62,7 @@ app.get('/api/search/:search', function (req, res) {
       res.status((err.error && err.error.code) || 500).send(err)
     })
   } else {
-    res.status(400).send(content({
+    res.status(400).send(content.create({
       error: {
         code: 400,
         message: 'please search parameter in path',

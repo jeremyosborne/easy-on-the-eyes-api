@@ -1,5 +1,5 @@
 const axios = require('axios')
-const content = require('easy-on-the-eyes-content').content
+const content = require('easy-on-the-eyes-content')
 const xforms = require('xforms')
 
 /**
@@ -13,7 +13,7 @@ module.exports.fetch = (url) => {
   var transformer = xforms.bestGuess(url)
   return axios.get(url)
     .then(function (response) {
-      return content({
+      return content.create({
         content: {
           transformer: transformer.name,
           url: url,
@@ -25,7 +25,7 @@ module.exports.fetch = (url) => {
     .catch(function (err) {
       const code = err.response ? err.response.status : 500
       // Network error OR non-okay response.
-      var error = content({
+      var error = content.create({
         error: {
           code: code,
           message: 'Could not retrieve content',
